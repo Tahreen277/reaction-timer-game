@@ -2,62 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Default light theme */
+
 [data-theme="light"] {
     background-color: white;
     color: black;
-  }
-  
-  /* Dark theme styles */
-  [data-theme="dark"] {
+}
+
+[data-theme="dark"] {
     background-color: #121212;
     color: white;
-  }
-  
-  /* Ensure navbar adapts to theme */
-  nav {
-    background-color: #1f2937; /* Default for light mode */
-  }
-  
-  [data-theme="dark"] nav {
-    background-color: #111827;
-  }
-  
-  /* Light Mode */
-[data-theme="light"] {
-    background-color: white;
+}
+
+
+[data-theme="light"] nav {
     color: black;
-  }
-  
-  /* Dark Mode */
-  [data-theme="dark"] {
-    background-color: #121212;
+}
+
+[data-theme="dark"] nav {
     color: white;
-  }
-  
-  /* Navbar Styling */
-  nav {
-    transition: all 0.3s ease-in-out;
-  }
-  
-  [data-theme="light"] nav {
-    background-color: #f3f4f6;
-    color: black;
-  }
-  
-  [data-theme="dark"] nav {
-    background-color: #1f2937;
-    color: white;
-  }
-  
-  /* Leaderboard Styling */
-  .leaderboard-container {
-    background-color: white;
-    color: black;
-  }
-  
-  [data-theme="dark"] .leaderboard-container {
-    background-color: #1a1a1a;
-    color: white;
-  }
-  
+}

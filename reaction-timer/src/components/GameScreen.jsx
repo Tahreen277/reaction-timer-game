@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function GameScreen({ setGameState, setReactionTime, bestTime, setBestTime, darkMode }) {
+export default function GameScreen({ setGameState, setReactionTime, bestTime, setBestTime }) {
     const [status, setStatus] = useState("waiting");
     const [startTime, setStartTime] = useState(null);
     const [timeoutId, setTimeoutId] = useState(null);
     const [showModal, setShowModal] = useState(false);
+
+  
+    const darkMode = document.documentElement.classList.contains("dark");
 
     useEffect(() => {
         const delay = Math.random() * 3000 + 2000;
@@ -35,8 +38,14 @@ export default function GameScreen({ setGameState, setReactionTime, bestTime, se
 
     return (
         <div
-            className={`w-full h-screen flex flex-col items-center justify-center text-3xl font-bold cursor-pointer transition 
-        ${status === "ready" ? "bg-green-500" : darkMode ? "bg-gray-900 text-white" : "bg-gray-200 text-black"}`}
+            className={`w-full h-screen flex flex-col items-center justify-center text-3xl font-bold cursor-pointer transition-all duration-300 
+                ${
+                    status === "ready"
+                        ? "bg-green-500 text-white"
+                        : darkMode
+                        ? "bg-gray-900 text-white"
+                        : "bg-gray-100 text-black"
+                }`}
             onClick={handleClick}
         >
             {status === "waiting" ? (
@@ -47,7 +56,7 @@ export default function GameScreen({ setGameState, setReactionTime, bestTime, se
                     className="flex flex-col items-center"
                 >
                     <motion.p
-                        className="text-6xl "
+                        className="text-6xl"
                         animate={{ y: [-10, 10, -10] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
                     >
@@ -89,10 +98,10 @@ export default function GameScreen({ setGameState, setReactionTime, bestTime, se
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.8, opacity: 0 }}
                         >
-                            <h2 className={`text-lg sm:text-xl font-bold font-poppins ${darkMode ? "text-red-400" : "text-red-600 font-poppins"}`}>
+                            <h2 className={`text-lg sm:text-xl font-bold font-poppins ${darkMode ? "text-red-400" : "text-red-600"}`}>
                                 Too Soon!
                             </h2>
-                            <p className={`mt-2 sm:text-2xl font-Montserrat ${darkMode ? "text-gray-300" : "text-gray-600 font-Montserrat"}`}>
+                            <p className={`mt-2 sm:text-2xl font-Montserrat ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
                                 Try Again.
                             </p>
                             <button
@@ -108,7 +117,6 @@ export default function GameScreen({ setGameState, setReactionTime, bestTime, se
                             >
                                 Okay
                             </button>
-
                         </motion.div>
                     </motion.div>
                 )}
