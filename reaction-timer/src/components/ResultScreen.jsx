@@ -29,18 +29,21 @@ export default function ResultScreen({ reactionTime, bestTime, setGameState }) {
     >
       {showConfetti && <Confetti numberOfPieces={200} recycle={false} />}
 
-      <h1 className="text-3xl font-bold relative font-poppins">
-        Your Reaction Time: {reactionTime}ms
-        {reactionTime <= 700 && (
-          <motion.span 
-            className="absolute -top-4 -right-4 text-yellow-300 text-2xl" 
-            animate={{ scale: [1, 1.5, 1], rotate: [0, 10, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 0.8 }}
-          >
-            ✨
-          </motion.span>
-        )}
-      </h1>
+      <div className="flex justify-center text-center">
+  <h1 className="text-3xl font-bold relative font-poppins">
+    Your Reaction Time: {reactionTime}ms
+    {reactionTime <= 700 && (
+      <motion.span 
+        className="absolute -top-4 -right-4 text-yellow-300 text-2xl" 
+        animate={{ scale: [1, 1.5, 1], rotate: [0, 10, -10, 0] }}
+        transition={{ repeat: Infinity, duration: 0.8 }}
+      >
+        ✨
+      </motion.span>
+    )}
+  </h1>
+</div>
+
 
       {reactionTime <= 600 && (
         <motion.p 
